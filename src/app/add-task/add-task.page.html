@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add new task </ion-title>
+    <ion-icon name="close" sot="end" size="large" class="icon-padding" (click)="dismiss()"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <!-- Input task name -->
+    <ion-item>
+      <ion-textarea placeholder="Write your task here"></ion-textarea>
+    </ion-item>
+
+    <!-- Priority -->
+    <ion-item>
+      <ion-label>Priority</ion-label>
+      <ion-select [(ngModel)]="taskPriority">
+        <ion-select-option value="high"> High </ion-select-option>
+        <ion-select-option value="middle"> Middle </ion-select-option>
+        <ion-select-option value="low"> Low </ion-select-option>
+      </ion-select>
+    </ion-item>
+    <!-- Date  -->
+    <ion-item>
+      <ion-icon name="calendar-outline" slot="start"></ion-icon>
+      <ion-label>Due Date</ion-label>
+      <ion-datetime [(ngModel)]="taskDate" displayFormat="D MM YYYY H:mm"></ion-datetime>
+    </ion-item>
+    <!-- item category -->
+    <ion-item>
+      <ion-icon name="pricetag-outline" slot="start"></ion-icon>
+      <ion-label>Category</ion-label>
+      <span>{{ taskCategory }}</span>
+    </ion-item>
+    <!-- Caterogy -->
+    <ion-item>
+      <!-- this is just test -->
+      <!-- <ion-chip *ngFor="let tag of categories">
+        <ion-label> hey {{ tag }}</ion-label>
+      </ion-chip> -->
+      <ion-chip  *ngFor="let tag of categories; let i = index" color="secondary" outline="true" (click)="selectCategory(i)">
+        <ion-label color="secondary">{{tag}}</ion-label>
+      </ion-chip>
+    </ion-item>
+    <!-- Ion add button -->
+    <ion-button class="ion-margin" expand="block" (click)="addTask()">Add Task</ion-button>
+  </ion-card>
+</ion-content>
+
